@@ -1,0 +1,13 @@
+*{
+    text-align: center;
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.headers{
+    padding: 20px;
+}
