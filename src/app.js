@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
+import {Posts} from './components';
 
 function App (){
     return (
@@ -13,23 +14,23 @@ function App (){
             </nav>
 
             <Route exact path = '/'>
-                <div class = 'headers'>welcome</div>
+                <div className = 'headers' >welcome</div>
             </Route>
 
             <Route path = '/posts'>
-                <div class = 'headers'>posts</div>
+                <Posts />
             </Route>
 
             <Route exact path = '/profile'>
-                <div class = 'headers'>profile</div>
+                <div className = 'headers' >profile</div>
             </Route>
 
             <Route path = '/profile/login'>
-                <div class = 'headers'>login</div>
+                <div className = 'headers' >login</div>
             </Route>
 
             <Route path = '/profile/register'>
-                <div class = 'headers'>register</div>
+                <div className = 'headers' >register</div>
             </Route>
         </>
     )
