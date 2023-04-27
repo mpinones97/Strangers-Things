@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Route, Link } from 'react-router-dom';
-import {Posts} from './components';
+import {Posts, UserForm} from './components';
 
 function App (){
+    const [token, setToken] = useState(null);
+
     return (
         <>
             <nav>
@@ -10,7 +12,6 @@ function App (){
                 <Link to = '/posts'>Posts</Link>
                 <Link to = '/profile'>Profile</Link>
                 <Link to = '/profile/login'>Login</Link>
-                <Link to = '/profile/register'>Register</Link>
             </nav>
 
             <Route exact path = '/'>
@@ -18,19 +19,15 @@ function App (){
             </Route>
 
             <Route path = '/posts'>
-                <Posts />
+                <Posts/>
             </Route>
 
             <Route exact path = '/profile'>
                 <div className = 'headers' >profile</div>
             </Route>
 
-            <Route path = '/profile/login'>
-                <div className = 'headers' >login</div>
-            </Route>
-
-            <Route path = '/profile/register'>
-                <div className = 'headers' >register</div>
+            <Route path = '/profile/:formResLogin' token = {setToken}>
+                <UserForm setToken = {setToken}/>
             </Route>
         </>
     )

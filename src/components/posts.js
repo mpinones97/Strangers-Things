@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { fetchFromApi } from "../api";
+import {fetchFromApi} from "../api";
 
 function Posts () {
     const [posts, setPosts] = useState([]);
@@ -17,7 +17,7 @@ function Posts () {
 
     return (
         <>
-            <div className = 'headers' >posts</div>
+            <div className = 'headers'> posts </div>
 
             <div>
                 {posts ? posts.map((post, index) => ( 
