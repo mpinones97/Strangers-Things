@@ -1,14 +1,17 @@
-import React, {useState} from "react";
-import { Link, useParams } from 'react-router-dom';
-import {fetchFromApi} from "../api";
+import React, {useState} from 'react';
+import {Link, useParams, useHistory} from 'react-router-dom';
+import {fetchFromApi} from '../api';
 
-function UserForm ({setToken}) {
+function UserForm ({setToken, setUserData}) {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const params = useParams();
     const {formResLogin} = params;
+
+    const history = useHistory();
+
 
     async function submit(ev) {
         ev.preventDefault();
@@ -21,7 +24,20 @@ function UserForm ({setToken}) {
         };
             
         const data = await fetchFromApi({endpoint: formResLogin , method: 'post', body: body });
-        setToken(data.token);
+        
+        const token = data.token;
+        
+        if (token) {
+            const response = await fetchFromApi({endpoint: 'myUser', token: token});
+            const user = response;
+            if (user) {
+                setUsername('');
+                setPassword('');
+                setToken(token);
+                setUserData(user);
+            }
+        };
+        history.push('/profile')
     };
 
     return (
@@ -36,7 +52,7 @@ function UserForm ({setToken}) {
                         name = 'username'
                         type = 'text'
                         value = {username} 
-                        onChange={ ev => setUsername(ev.target.value) }
+                        onChange = {ev => setUsername(ev.target.value)}
                     />
                 </div>
                 
@@ -47,11 +63,14 @@ function UserForm ({setToken}) {
                         name = 'password'
                         type = 'password'
                         value = {password} 
-                        onChange={ ev => setPassword(ev.target.value) }
+                        onChange = {ev => setPassword(ev.target.value)}
                     />
                 </div>
 
                 <button type = 'submit'> {formResLogin == 'register' ? 'register' : 'login'} </button>
+                
+                <br></br>
+                
                 {formResLogin == 'register' ?
                     <Link to = '/profile/login'>Login</Link> :
                     <Link to = '/profile/register'>Register</Link>

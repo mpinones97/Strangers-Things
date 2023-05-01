@@ -1,19 +1,18 @@
-import React, {useEffect, useState} from "react";
-import {fetchFromApi} from "../api";
+import React, {useEffect, useState} from 'react';
+import { fetchFromApi } from '../api';
 
 function Posts () {
     const [posts, setPosts] = useState([]);
 
     async function fetchPosts() {
-        const data = await fetchFromApi({endpoint: 'allPosts' });
+        const data = await fetchFromApi({endpoint: 'posts'});
         
         if (data?.posts){
             setPosts(data.posts); 
-            console.log(data.posts)
         }
     }
 
-    useEffect(() => {fetchPosts();}, []);
+    useEffect(() => {fetchPosts()}, []);
 
     return (
         <>
