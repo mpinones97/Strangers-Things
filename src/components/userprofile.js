@@ -2,33 +2,33 @@ import React, {useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 import {AddPost} from '.'; 
 
-function UserProfile ({token, userData, fetchPosts}) {
+
+function UserProfile ({token, userData, posts, fetchPosts}) {
     if (token){
         const username = userData.username;
-        const posts = userData.posts;
-        // const messages = userData.messages;
+        console.log(userData)
 
         return (
             <>
                 <div className = 'headers'> you are login to {username}'s profile </div>
 
-                <AddPost token = {token} userData = {userData} fetchPosts = {fetchPosts}/>
+                <AddPost token = {token} fetchPosts = {fetchPosts}/>
 
-                {(posts ? posts.map((post, index) => ( 
-                    <>
-                        <div className = 'postTiles' key = {post._id ??index}>
-                            <div> {post.title} </div>
+                {(posts ? posts.map((post, index) =>
+                    ((post.author.username == username) ? (
+                        <>
+                            <div className = 'postTiles' key = {post._id ?? index}>
+                                <div> {post.title} </div>
 
-                            <div> {post.description} </div>
+                                <div> {post.description} </div>
 
-                            <div> Price: {post.price} </div>
+                                <div> Price: {post.price} </div>
 
-                            <div> Seller: {username} </div>
-
-                            <div> Location: {post.location} </div>
-                        </div>
-                    </>
-                )) : <div>no post found</div>)}
+                                <div> Location: {post.location} </div>
+                            </div>
+                        </>
+                    ) : <></>)
+                ) : <div>no post found</div>)}
             </>
         );
     }

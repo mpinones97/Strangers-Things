@@ -8,6 +8,8 @@ function App () {
     const [userData, setUserData] = useState(null);
     const [posts, setPosts] = useState([]);
 
+    console.log(posts)
+
     async function fetchPosts() {
         const data = await fetchFromApi({endpoint: 'posts'});
         
@@ -43,7 +45,7 @@ function App () {
             </Route>
 
             <Route exact path = '/profile'>
-                <UserProfile token = {token} userData = {userData}  fetchPosts = {fetchPosts}/>
+                <UserProfile token = {token} userData = {userData} posts = {posts} fetchPosts = {fetchPosts}/>
             </Route>
 
             <Route path = '/profile/:formResLogin'>
