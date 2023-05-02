@@ -1,4 +1,4 @@
-const baseApiUrl = 'https://strangers-things.herokuapp.com/api/2301-FTB-PT-WEB-PT';
+const baseApiUrl = 'https://strangers-things.herokuapp.com/api/2301-FTB-PT-WEB-PT/';
 
 const apiEndpoint = {
     register: '/users/register',
@@ -7,10 +7,16 @@ const apiEndpoint = {
     posts: '/posts',
 };
 
-function getUrl (endpoint) {
-    const path = apiEndpoint[endpoint];
+function getUrl (path) {
+    if ( path == 'login'){
+        path = 'users/login'
+    }
 
-    if (!path) {
+    else if ( path == 'register'){
+        path = 'users/register'
+    } 
+
+    else if (!path) {
         throw new Error ('Invalid API endpoint specified!?!?!')
     }
 
@@ -30,9 +36,9 @@ function getOptions (method, body , token) {
     return options
 };
 
-export async function fetchFromApi ({endpoint, method, body, token}) {
+export async function fetchFromApi ({path, method, body, token}) {
     try {
-        const result = await fetch(getUrl(endpoint), getOptions(method, body, token));
+        const result = await fetch(getUrl(path), getOptions(method, body, token));
         const response = await result.json();
 
         return response?.data;

@@ -23,12 +23,12 @@ function UserForm ({setToken, setUserData}) {
             }
         };
             
-        const data = await fetchFromApi({endpoint: formResLogin , method: 'post', body: body });
+        const data = await fetchFromApi({path: formResLogin , method: 'post', body: body });
         
         const token = data.token;
         
         if (token) {
-            const response = await fetchFromApi({endpoint: 'myUser', token: token});
+            const response = await fetchFromApi({path: 'users/me', token: token});
             const user = response;
             if (user) {
                 setUsername('');
@@ -37,7 +37,7 @@ function UserForm ({setToken, setUserData}) {
                 setUserData(user);
             }
         };
-        
+
         history.push('/profile')
     };
 

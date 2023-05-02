@@ -19,7 +19,7 @@ function AddPost ({token, fetchPosts}) {
             }
         };
 
-        const data = await fetchFromApi({endpoint: 'posts', method: 'post', body: body, token});
+        const data = await fetchFromApi({path: 'posts', method: 'post', body: body, token});
 
         if (data.post){
             setTitle('');

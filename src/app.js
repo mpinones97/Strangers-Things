@@ -9,7 +9,7 @@ function App () {
     const [posts, setPosts] = useState([]);
 
     async function fetchPosts() {
-        const data = await fetchFromApi({endpoint: 'posts'});
+        const data = await fetchFromApi({path: 'posts'});
         
         if (data?.posts){
             setPosts(data.posts); 
