@@ -1,11 +1,14 @@
 *{
     text-align: center;
+    margin: 0px;
 }
 
 nav{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    background-color: darkcyan;
+    padding: 5px;
 }
 
 .headers{

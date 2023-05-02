@@ -1,10 +1,11 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 
 function Home ({token, setToken, setUserData}) {
+    const history = useHistory();
     async function onLogout () {
-        setToken(null);
-        setUserData(null);
+        setToken = (null);
+        setUserData = (null);
         history.push('/');
     };
 
@@ -16,6 +17,7 @@ function Home ({token, setToken, setUserData}) {
                 ( <>
                     <a href="/" onClick={onLogout}> Log Out </a>
                 </> ) : <Link to = '/profile/login'> Login / Register </Link>
+                
             }
         </>
     )   

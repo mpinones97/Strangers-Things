@@ -6,10 +6,12 @@ function App () {
     const [token, setToken] = useState(null);
     const [userData, setUserData] = useState(null);
 
+
     useEffect(() => {
         console.log('token from app: ' + token)
         console.log('userData from app: ' + userData)
     }, [token, userData]);
+
 
     return (
         <>

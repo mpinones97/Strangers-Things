@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { fetchFromApi } from '../api';
+import {fetchFromApi} from '../api';
 
 function Posts () {
     const [posts, setPosts] = useState([]);
