@@ -6,8 +6,6 @@ function UserProfile ({token, userData}) {
     if (token){
         const username = userData.username;
         const posts = userData.posts;
-
-        // const id = userData._id
         // const messages = userData.messages;
 
         return (
