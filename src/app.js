@@ -19,6 +19,7 @@ function App () {
     useEffect(() => {fetchPosts()}, []);
 
 
+
     return (
         <>
             <nav>
@@ -42,8 +43,8 @@ function App () {
                 }
             </Route>
 
-            <Route path = '/posts:postID'>
-                <PostPage posts = {posts} token = {token}/>
+            <Route path = '/posts/:postID'>
+                <PostPage posts = {posts} token = {token} userData = {userData}  setUserData = {setUserData}/>
             </Route>
 
             <Route exact path = '/profile'>

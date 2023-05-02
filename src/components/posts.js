@@ -13,8 +13,8 @@ function Posts ({posts, token}) {
                         <div> {post.title} </div>
 
                         <div> {post.description} </div>
-
-                        {token ? <Link to = {`/posts:${post._id}`}> more details </Link> :  <></>}
+    
+                        {token ? <Link to = {`/posts/${post._id}`}> more details </Link> :  <></>}
 
                     </div>
                 ))}

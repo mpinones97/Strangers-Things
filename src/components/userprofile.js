@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {useHistory} from 'react-router-dom';
 import {AddPost} from '.'; 
 import {fetchFromApi} from '../api';
@@ -8,12 +8,6 @@ function UserProfile ({token, userData, posts, fetchPosts}) {
     if (token){
         const username = userData.username;
 
-        async function handleDelete () {
-            //await fetchFromApi({path: `posts/${post._id}`, method: 'delete', token});
-            await fetchPosts();
-
-        };
-
         return (
             <>
                 <div className = 'headers'> you are login to {username}'s profile </div>
@@ -22,7 +16,7 @@ function UserProfile ({token, userData, posts, fetchPosts}) {
 
                 {(posts ? posts.map((post, index) =>
                     ((post.author.username == username) ? (
-                        <>
+                        
                             <div className = 'postTiles' key = {post._id ?? index}>
                                 <div> {post.title} </div>
 
@@ -32,9 +26,11 @@ function UserProfile ({token, userData, posts, fetchPosts}) {
 
                                 <div> Location: {post.location} </div>
                                 
-                                <button onClick = {handleDelete}> delete </button>
+                                <button onClick = {async () => {
+                                    await fetchFromApi({path: `posts/${post._id}`, method: 'delete', token});
+                                    await fetchPosts();
+                                }}> delete </button>
                             </div>
-                        </>
                     ) : <></>)
                 ) : <div>no post found</div>)}
             </>
