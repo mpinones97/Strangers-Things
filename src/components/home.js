@@ -16,7 +16,7 @@ function Home ({token, setToken, setUserData}) {
             {token ?
                 ( <>
                     <a href="/" onClick={onLogout}> Log Out </a>
-                </> ) : <Link to = '/profile/login'> Login / Register </Link>
+                </> ) : <Link to = '/profile/login' className = 'links'> Login / Register </Link>
                 
             }
         </>

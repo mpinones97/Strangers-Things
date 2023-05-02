@@ -1,6 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
+
 *{
     text-align: center;
     margin: 0px;
+    text-decoration: none;
+    font-size: 30px;
+    background-color: MintCream;
+    font-family: 'Amatic SC', cursive;
+    font-weight: 900;
+    font-stretch: expanded;
+}
+
+.links{
+    color: darkcyan;
+    -webkit-text-stroke:  1px darkcyan;
 }
 
 nav{

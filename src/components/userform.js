@@ -73,8 +73,8 @@ function UserForm ({setToken, setUserData}) {
                 <br></br>
                 
                 {formResLogin == 'register' ?
-                    <Link to = '/profile/login'>Login</Link> :
-                    <Link to = '/profile/register'>Register</Link>
+                    <Link to = '/profile/login' className = 'links'>Login</Link> :
+                    <Link to = '/profile/register' className = 'links'>Register</Link>
                 }
             </form>
         </>

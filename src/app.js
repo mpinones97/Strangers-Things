@@ -23,11 +23,11 @@ function App () {
     return (
         <>
             <nav>
-                <Link to = '/'> Home </Link>
-                <Link to = '/posts'> Posts </Link>
+                <Link to = '/' className = 'links'> Home </Link>
+                <Link to = '/posts'className = 'links'> Posts </Link>
                 {token &&
                     ( <>
-                        <Link to="/profile">My Profile</Link>
+                        <Link to="/profile" className = 'links'>My Profile</Link>
                     </> )
                 }
             </nav>
