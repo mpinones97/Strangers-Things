@@ -21,8 +21,6 @@ function AddPost ({token, fetchPosts}) {
 
         const data = await fetchFromApi({endpoint: 'posts', method: 'post', body: body, token});
 
-        console.log(data)
-
         if (data.post){
             setTitle('');
             setDescription('');
@@ -87,7 +85,7 @@ function AddPost ({token, fetchPosts}) {
 
             <br></br>
         </>
-    )
+    );
 
 };
 

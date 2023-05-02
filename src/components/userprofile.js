@@ -6,7 +6,6 @@ import {AddPost} from '.';
 function UserProfile ({token, userData, posts, fetchPosts}) {
     if (token){
         const username = userData.username;
-        console.log(userData)
 
         return (
             <>

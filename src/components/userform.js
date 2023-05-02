@@ -37,6 +37,7 @@ function UserForm ({setToken, setUserData}) {
                 setUserData(user);
             }
         };
+        
         history.push('/profile')
     };
 

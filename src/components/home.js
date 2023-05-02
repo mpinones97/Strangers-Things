@@ -20,7 +20,7 @@ function Home ({token, setToken, setUserData}) {
                 
             }
         </>
-    )   
+    );   
 };
 
 export default Home;

@@ -1,6 +1,7 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
-function Posts ({posts}) {
+function Posts ({posts, token}) {
 
     return (
         <>
@@ -13,11 +14,8 @@ function Posts ({posts}) {
 
                         <div> {post.description} </div>
 
-                        <div> Price: {post.price} </div>
+                        {token ? <Link to = {`/posts:${post._id}`}> more details </Link> :  <></>}
 
-                        <div> Seller: {post.author.username} </div>
-
-                        <div> Location: {post.location} </div>
                     </div>
                 ))}
             </div>
