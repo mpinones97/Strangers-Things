@@ -1,25 +1,13 @@
-import React, {useEffect, useState} from 'react';
-import {fetchFromApi} from '../api';
+import React from 'react';
 
-function Posts () {
-    const [posts, setPosts] = useState([]);
-
-    async function fetchPosts() {
-        const data = await fetchFromApi({endpoint: 'posts'});
-        
-        if (data?.posts){
-            setPosts(data.posts); 
-        }
-    }
-
-    useEffect(() => {fetchPosts()}, []);
+function Posts ({posts}) {
 
     return (
         <>
             <div className = 'headers'> posts </div>
 
             <div>
-                {posts ? posts.map((post, index) => ( 
+                {posts.map((post, index) => ( 
                     <div className = 'postTiles' key = {post._id ?? index}>
                         <div> {post.title} </div>
 
@@ -31,7 +19,7 @@ function Posts () {
 
                         <div> Location: {post.location} </div>
                     </div>
-                )) : <div>no post found</div>}
+                ))}
             </div>
         </>
     );

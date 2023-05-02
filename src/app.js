@@ -1,16 +1,22 @@
 import React, {useState, useEffect} from 'react';
 import {Route, Link} from 'react-router-dom';
 import {UserProfile, Posts, UserForm, Home} from './components';
+import {fetchFromApi} from './api';
 
 function App () {
     const [token, setToken] = useState(null);
     const [userData, setUserData] = useState(null);
+    const [posts, setPosts] = useState([]);
 
+    async function fetchPosts() {
+        const data = await fetchFromApi({endpoint: 'posts'});
+        
+        if (data?.posts){
+            setPosts(data.posts); 
+        }
+    }
 
-    useEffect(() => {
-        console.log('token from app: ' + token)
-        console.log('userData from app: ' + userData)
-    }, [token, userData]);
+    useEffect(() => {fetchPosts()}, []);
 
 
     return (
@@ -30,11 +36,14 @@ function App () {
             </Route>
 
             <Route path = '/posts'>
-                <Posts/>
+                {posts ? 
+                    <Posts posts = {posts}/> 
+                    : <div> no post to display</div>
+                }
             </Route>
 
             <Route exact path = '/profile'>
-                <UserProfile token = {token} userData = {userData}/>
+                <UserProfile token = {token} userData = {userData}  fetchPosts = {fetchPosts}/>
             </Route>
 
             <Route path = '/profile/:formResLogin'>

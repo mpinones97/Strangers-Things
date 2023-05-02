@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 import {AddPost} from '.'; 
 
-function UserProfile ({token, userData}) {
+function UserProfile ({token, userData, fetchPosts}) {
     if (token){
         const username = userData.username;
         const posts = userData.posts;
@@ -11,7 +11,9 @@ function UserProfile ({token, userData}) {
         return (
             <>
                 <div className = 'headers'> you are login to {username}'s profile </div>
-                <AddPost token = {token} userData = {userData}/>
+
+                <AddPost token = {token} userData = {userData} fetchPosts = {fetchPosts}/>
+                
                 {(posts ? posts.map((post, index) => ( 
                     <>
                         <div className = 'postTiles' key = {post._id ?? index}>

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {fetchFromApi} from '../api';
 
-function AddPost ({token}) {
+function AddPost ({token, fetchPosts}) {
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -28,6 +28,7 @@ function AddPost ({token}) {
             setDescription('');
             setPrice('');
             setLocation('');
+            await fetchPosts();
         }
     };
 
